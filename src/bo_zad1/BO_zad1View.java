@@ -179,6 +179,11 @@ public class BO_zad1View extends FrameView {
 
         resetujWarunki.setText(resourceMap.getString("resetujWarunki.text")); // NOI18N
         resetujWarunki.setName("resetujWarunki"); // NOI18N
+        resetujWarunki.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetujWarunkiActionPerformed(evt);
+            }
+        });
 
         zatwierdzWarunki.setText(resourceMap.getString("zatwierdzWarunki.text")); // NOI18N
         zatwierdzWarunki.setName("zatwierdzWarunki"); // NOI18N
@@ -289,7 +294,7 @@ public class BO_zad1View extends FrameView {
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(wykresPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+                .addComponent(wykresPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
                 .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
@@ -489,7 +494,7 @@ private void zatwierdzWarunekActionPerformed(java.awt.event.ActionEvent evt) {//
             znak.getSelectedIndex());
 
     listaOgraniczen.add(ograniczenia);
-    odswiezOgraniczenia();
+    dodajOgraniczenia();
     jDialog1.setVisible(false);
 }//GEN-LAST:event_zatwierdzWarunekActionPerformed
 
@@ -497,6 +502,12 @@ private void zatwierdzWarunkiActionPerformed(java.awt.event.ActionEvent evt) {//
 // TODO add your handling code here:
     rysujFunkcje();
 }//GEN-LAST:event_zatwierdzWarunkiActionPerformed
+
+private void resetujWarunkiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetujWarunkiActionPerformed
+// TODO add your handling code here:
+    listaOgraniczen.clear();
+    czyscOgraniczenia();
+}//GEN-LAST:event_resetujWarunkiActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton anulujWarunek;
     private javax.swing.JButton dodajFCelu;
@@ -537,10 +548,14 @@ private void zatwierdzWarunkiActionPerformed(java.awt.event.ActionEvent evt) {//
     private int busyIconIndex = 0;
     private JDialog aboutBox;
 
-    void odswiezOgraniczenia() {
+    void dodajOgraniczenia() {
         for (int i = 0; i < listaOgraniczen.size(); i++) {
-            ograniczeniaOkno.setText(listaOgraniczen.toString() + "\n");
+            ograniczeniaOkno.setText(listaOgraniczen.toString());
         }
+    }
+
+    private void czyscOgraniczenia() {
+        ograniczeniaOkno.setText("");
     }
 
     private JFreeChart odswiezWykres(XYDataset xYDataset) {
@@ -551,12 +566,12 @@ private void zatwierdzWarunkiActionPerformed(java.awt.event.ActionEvent evt) {//
     void rysujFunkcje() {
         final XYSeriesCollection tmp = new XYSeriesCollection();
         for (int i = 0; i < listaOgraniczen.size(); i++) {
-            tmp.addSeries(listaOgraniczen.get(i).dataSet());
-            try {
-                Thread.sleep(10000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(BO_zad1View.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            tmp.addSeries(listaOgraniczen.get(i).dataSet(i));
+//            try {
+//                Thread.sleep(10000);
+//            } catch (InterruptedException ex) {
+//                Logger.getLogger(BO_zad1View.class.getName()).log(Level.SEVERE, null, ex);
+//            }
             dodajWykres(odswiezWykres(tmp));
 
         }

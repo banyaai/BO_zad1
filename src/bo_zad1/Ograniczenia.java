@@ -18,9 +18,10 @@ public class Ograniczenia extends Funkcja {
 
     double valC;
     int znak;
-    double poczatek = 0;
-    double koniec = 10;
+    double poczatek = -5;
+    double koniec = 5;
     XYSeries xYSeries;
+
     /**
      * 
      * @param valA
@@ -45,12 +46,20 @@ public class Ograniczenia extends Funkcja {
         }
     }
 
-    public XYSeries dataSet() {
-        
+    public XYSeries dataSet(int numer) {
+        int k = 0;
         xYSeries = new XYSeries("nazwa");
-        for (double i = this.poczatek; i < this.koniec; i = i + 0.1) {
+        for (double i = this.poczatek; i < this.koniec; i = i + 0.001) {
             xYSeries.add(i, zwrocY(i));
-            //xYSeries.add(i, 1);//zwrocY(i));
+            if (k == 100 + numer) {
+                k = 0;
+                if (znak == 0) {
+                    xYSeries.add(i, zwrocY(i) + 10);
+                } else {
+                    xYSeries.add(i, zwrocY(i) - 10);
+                }
+            }
+            k++;
         }
         return xYSeries;//new XYSeriesCollection(xYSeries);
     }
@@ -73,7 +82,6 @@ public class Ograniczenia extends Funkcja {
             tmp += " <= ";
         }
 
-        return tmp + valC;
+        return tmp + valC + "\n";
     }
-    
 }
