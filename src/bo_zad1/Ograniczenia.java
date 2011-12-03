@@ -18,8 +18,8 @@ public class Ograniczenia extends Funkcja {
 
     double valC;
     int znak;
-    double poczatek = -5;
-    double koniec = 5;
+    double poczatek = -10;
+    double koniec = 10;
     XYSeries xYSeries;
 
     /**
@@ -46,17 +46,38 @@ public class Ograniczenia extends Funkcja {
         }
     }
 
+    private double zwrocX() {
+        return valC / valA;
+    }
+
     public XYSeries dataSet(int numer) {
         int k = 0;
-        xYSeries = new XYSeries("nazwa");
+        xYSeries = new XYSeries(this.toString());
         for (double i = this.poczatek; i < this.koniec; i = i + 0.001) {
-            xYSeries.add(i, zwrocY(i));
-            if (k == 100 + numer) {
-                k = 0;
-                if (znak == 0) {
-                    xYSeries.add(i, zwrocY(i) + 10);
-                } else {
-                    xYSeries.add(i, zwrocY(i) - 10);
+            if (valB != 0) {
+                xYSeries.add(i, zwrocY(i));
+
+                if (k == 100 + numer) {
+                    k = 0;
+
+                    if (znak == 0) {
+                        xYSeries.add(i, zwrocY(i) + 10);
+                    } else {
+                        xYSeries.add(i, zwrocY(i) - 10);
+                    }
+
+                }
+            } else {
+                xYSeries.add(zwrocX(), i);
+                if (k == 100 + numer) {
+                    k = 0;
+
+                    if (znak == 0) {
+                        xYSeries.add(zwrocX()+10, i);
+                    } else {
+                        xYSeries.add(zwrocX()-10, i);
+                    }
+
                 }
             }
             k++;

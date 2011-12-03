@@ -148,6 +148,15 @@ public class BO_zad1View extends FrameView {
         plusMinus = new javax.swing.JComboBox();
         wynik = new javax.swing.JTextField();
         znak = new javax.swing.JComboBox();
+        jDialog2 = new javax.swing.JDialog();
+        valACel = new javax.swing.JTextField();
+        valBCel = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        plusMinusCel = new javax.swing.JComboBox();
+        jLabel6 = new javax.swing.JLabel();
+        minMaxCelu = new javax.swing.JComboBox();
+        zatwierdzWarunek1 = new javax.swing.JButton();
+        anulujWarunek1 = new javax.swing.JButton();
 
         mainPanel.setName("mainPanel"); // NOI18N
 
@@ -205,8 +214,8 @@ public class BO_zad1View extends FrameView {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(usunWarunek, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                            .addComponent(dodajWarunek, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                            .addComponent(usunWarunek, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                            .addComponent(dodajWarunek, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(resetujWarunki, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -241,6 +250,11 @@ public class BO_zad1View extends FrameView {
 
         dodajFCelu.setText(resourceMap.getString("dodajFCelu.text")); // NOI18N
         dodajFCelu.setName("dodajFCelu"); // NOI18N
+        dodajFCelu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dodajFCeluActionPerformed(evt);
+            }
+        });
 
         usunFCelu.setText(resourceMap.getString("usunFCelu.text")); // NOI18N
         usunFCelu.setName("usunFCelu"); // NOI18N
@@ -464,6 +478,87 @@ public class BO_zad1View extends FrameView {
                 .addGap(27, 27, 27))
         );
 
+        jDialog2.setName("jDialog2"); // NOI18N
+
+        valACel.setText(resourceMap.getString("valACel.text")); // NOI18N
+        valACel.setName("valACel"); // NOI18N
+
+        valBCel.setText(resourceMap.getString("valBCel.text")); // NOI18N
+        valBCel.setName("valBCel"); // NOI18N
+
+        jLabel5.setText(resourceMap.getString("jLabel5.text")); // NOI18N
+        jLabel5.setName("jLabel5"); // NOI18N
+
+        plusMinusCel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "+", "-" }));
+        plusMinusCel.setName("plusMinusCel"); // NOI18N
+
+        jLabel6.setText(resourceMap.getString("jLabel6.text")); // NOI18N
+        jLabel6.setName("jLabel6"); // NOI18N
+
+        minMaxCelu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "->min", "->max" }));
+        minMaxCelu.setName("minMaxCelu"); // NOI18N
+
+        zatwierdzWarunek1.setText(resourceMap.getString("zatwierdzWarunek1.text")); // NOI18N
+        zatwierdzWarunek1.setName("zatwierdzWarunek1"); // NOI18N
+        zatwierdzWarunek1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                zatwierdzWarunek1ActionPerformed(evt);
+            }
+        });
+
+        anulujWarunek1.setText(resourceMap.getString("anulujWarunek1.text")); // NOI18N
+        anulujWarunek1.setName("anulujWarunek1"); // NOI18N
+        anulujWarunek1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anulujWarunek1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialog2Layout = new javax.swing.GroupLayout(jDialog2.getContentPane());
+        jDialog2.getContentPane().setLayout(jDialog2Layout);
+        jDialog2Layout.setHorizontalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog2Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(zatwierdzWarunek1)
+                    .addGroup(jDialog2Layout.createSequentialGroup()
+                        .addComponent(valACel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(plusMinusCel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(valBCel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6)))
+                .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDialog2Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(minMaxCelu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDialog2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(anulujWarunek1)))
+                .addGap(47, 47, 47))
+        );
+        jDialog2Layout.setVerticalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog2Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(valACel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(plusMinusCel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(valBCel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(minMaxCelu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58)
+                .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(zatwierdzWarunek1)
+                    .addComponent(anulujWarunek1))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
         setComponent(mainPanel);
         setMenuBar(menuBar);
         setStatusBar(statusPanel);
@@ -508,23 +603,46 @@ private void resetujWarunkiActionPerformed(java.awt.event.ActionEvent evt) {//GE
     listaOgraniczen.clear();
     czyscOgraniczenia();
 }//GEN-LAST:event_resetujWarunkiActionPerformed
+
+    private void dodajFCeluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dodajFCeluActionPerformed
+        // TODO add your handling code here:
+        jDialog2.setVisible(true);
+    }//GEN-LAST:event_dodajFCeluActionPerformed
+
+    private void zatwierdzWarunek1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zatwierdzWarunek1ActionPerformed
+        // TODO add your handling code here:
+        this.funkcjaCelu = new FunkcjaCelu(minMaxCelu.getSelectedIndex(), 
+                Double.parseDouble(valACel.getText()),
+                Double.parseDouble(valBCel.getText()));
+    }//GEN-LAST:event_zatwierdzWarunek1ActionPerformed
+
+    private void anulujWarunek1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anulujWarunek1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_anulujWarunek1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton anulujWarunek;
+    private javax.swing.JButton anulujWarunek1;
     private javax.swing.JButton dodajFCelu;
     private javax.swing.JButton dodajWarunek;
     private javax.swing.JDialog jDialog1;
+    private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JComboBox minMaxCelu;
     private javax.swing.JTextArea ograniczeniaOkno;
     private javax.swing.JComboBox plusMinus;
+    private javax.swing.JComboBox plusMinusCel;
     private javax.swing.JProgressBar progressBar;
     private javax.swing.JButton resetujWarunki;
     private javax.swing.JLabel statusAnimationLabel;
@@ -533,14 +651,18 @@ private void resetujWarunkiActionPerformed(java.awt.event.ActionEvent evt) {//GE
     private javax.swing.JButton usunFCelu;
     private javax.swing.JButton usunWarunek;
     private javax.swing.JTextField valA;
+    private javax.swing.JTextField valACel;
     private javax.swing.JTextField valB;
+    private javax.swing.JTextField valBCel;
     private javax.swing.JPanel wykresPanel;
     private javax.swing.JTextField wynik;
     private javax.swing.JButton zatwierdzWarunek;
+    private javax.swing.JButton zatwierdzWarunek1;
     private javax.swing.JButton zatwierdzWarunki;
     private javax.swing.JComboBox znak;
     // End of variables declaration//GEN-END:variables
     private ArrayList<Ograniczenia> listaOgraniczen = new ArrayList<Ograniczenia>();
+    private FunkcjaCelu funkcjaCelu;
     private final Timer messageTimer;
     private final Timer busyIconTimer;
     private final Icon idleIcon;
@@ -573,8 +695,8 @@ private void resetujWarunkiActionPerformed(java.awt.event.ActionEvent evt) {//GE
 //                Logger.getLogger(BO_zad1View.class.getName()).log(Level.SEVERE, null, ex);
 //            }
             dodajWykres(odswiezWykres(tmp));
-
         }
+        
 
     }
 
